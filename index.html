@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Board</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h2>Internship Board</h2>
+  </header>
+  <main>
+    <h1>Discover Internships</h1>
+    <p>Find opportunities and build your future.</p>
+
+    <label for="search">Search internships</label>
+    <input id="search" type="search" placeholder="Search internships">
+
+    <label for="domain">Choose domain</label>
+    <select id="domain">
+      <option value="all">All domains</option>
+    </select>
+
+    <button id="clear" type="button">Clear filters</button>
+
+    <h2>Available Internships</h2>
+    <p id="result-count" aria-live="polite"></p>
+    <div id="internship-list" class="internship-grid"></div>
+    <p id="status" role="status"></p>
+  </main>
+  <footer>
+    <p>Built with HTML, CSS and JavaScript.</p>
+  </footer>
+</body>
+</html>
