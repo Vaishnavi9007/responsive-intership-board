@@ -1,0 +1,74 @@
+const internships = [
+  {
+    title: "Frontend Developer Intern",
+    company: "Tech Solutions",
+    domain: "Web Development",
+    location: "Remote"
+  },
+  {
+    title: "Python Developer Intern",
+    company: "Code Labs",
+    domain: "Python",
+    location: "Remote"
+  },
+  {
+    title: "Data Science Intern",
+    company: "DataWorks",
+    domain: "Data Science",
+    location: "Hybrid"
+  },
+  {
+    title: "AI/ML Intern",
+    company: "Future AI",
+    domain: "AI/ML",
+    location: "Remote"
+  }
+];
+
+const searchInput = document.getElementById("search");
+const domainFilter = document.getElementById("domain");
+const internshipList = document.getElementById("internship-list");
+
+function displayInternships() {
+  const searchText = searchInput.value.toLowerCase();
+  const selectedDomain = domainFilter.value;
+
+  const filtered = internships.filter(item => {
+    const matchesSearch =
+      item.title.toLowerCase().includes(searchText) ||
+      item.company.toLowerCase().includes(searchText) ||
+      item.domain.toLowerCase().includes(searchText);
+
+    const matchesDomain =
+      selectedDomain === "all" ||
+      item.domain === selectedDomain;
+
+    return matchesSearch && matchesDomain;
+  });
+
+  internshipList.innerHTML = "";
+
+  if (filtered.length === 0) {
+    internshipList.textContent = "No internships found.";
+    return;
+  }
+
+  filtered.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "internship-card";
+
+    card.innerHTML = `
+      <h3>${item.title}</h3>
+      <p>Company: ${item.company}</p>
+      <p>Domain: ${item.domain}</p>
+      <p>Location: ${item.location}</p>
+    `;
+
+    internshipList.appendChild(card);
+  });
+}
+
+searchInput.addEventListener("input", displayInternships);
+domainFilter.addEventListener("change", displayInternships);
+
+displayInternships();
